@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class engineering {
 	public static void main(String[] args) throws SQLException {
 	Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/engg", "root","root");
-	//PreparedStatement preparedStatement=  connection.prepareStatement
-			//("create table BE(USN varchar(50) primary key,name varchar(50) not null,stream varchar(50),clgname varchar(50),CGPA varchar(10))");
+	PreparedStatement preparedStatement=  connection.prepareStatement
+			("create table BE(USN varchar(50) primary key,name varchar(50) not null,stream varchar(50),clgname varchar(50),CGPA varchar(10))");
 	
 	boolean flag=true;
 	Scanner scanner = new Scanner(System.in);
@@ -29,68 +29,68 @@ public class engineering {
 		switch (scanner.nextInt()) {
 		case 1:
 		{
-			PreparedStatement preparedStatement=  connection.prepareStatement("insert into BE values(?,?,?,?,?)");
+			PreparedStatement preparedStatement1=  connection.prepareStatement("insert into BE values(?,?,?,?,?)");
 			System.out.println("enter the USN");
-			preparedStatement.setString(1, scanner.next());
+			preparedStatement1.setString(1, scanner.next());
 			System.out.println("enter the name");
-			preparedStatement.setString(2, scanner.next());
+			preparedStatement1.setString(2, scanner.next());
 			System.out.println("enter the stream");
-			preparedStatement.setString(3, scanner.next());
+			preparedStatement1.setString(3, scanner.next());
 			System.out.println("enter the clgname");
-			preparedStatement.setString(4, scanner.next());
+			preparedStatement1.setString(4, scanner.next());
 			System.out.println("enter the CGPA");
-			preparedStatement.setString(5, scanner.next());
-			preparedStatement.executeUpdate();
+			preparedStatement1.setString(5, scanner.next());
+			preparedStatement1.executeUpdate();
 			System.out.println("................added...............");	
 		}break;
 case 2: {
-	PreparedStatement preparedStatement =connection.prepareStatement("update BE set breach=? where USN=? ");
+	PreparedStatement preparedStatement1 =connection.prepareStatement("update BE set breach=? where USN=? ");
 	System.out.println("enter the USN");
-	preparedStatement.setString(1, scanner.next());
+	preparedStatement1.setString(1, scanner.next());
 	System.out.println("enetr the branch name");
-	preparedStatement.setString(2, scanner.next());
-	preparedStatement.executeUpdate();
+	preparedStatement1.setString(2, scanner.next());
+	preparedStatement1.executeUpdate();
 	System.out.println("..............updated................");
 	
 	}break;
 case 3: {
-	PreparedStatement preparedStatement =connection.prepareStatement("update BE set CGPA=? where USN=? ");
+	PreparedStatement preparedStatement1 =connection.prepareStatement("update BE set CGPA=? where USN=? ");
 	System.out.println("enter the USN");
-	preparedStatement.setString(1, scanner.next());
+	preparedStatement1.setString(1, scanner.next());
 	System.out.println("enetr the update CGPA");
-	preparedStatement.setString(2, scanner.next());
-	preparedStatement.executeUpdate();
+	preparedStatement1.setString(2, scanner.next());
+	preparedStatement1.executeUpdate();
 	System.out.println("..............updated................");
 }break;
 
 case 4: {
-	PreparedStatement preparedStatement =connection.prepareStatement("select * from BE where USN=? ");
+	PreparedStatement preparedStatement1 =connection.prepareStatement("select * from BE where USN=? ");
 	System.out.println("enter the USN");
-	preparedStatement.setString(1, scanner.next());
-	ResultSet resultSet= preparedStatement.executeQuery();
+	preparedStatement1.setString(1, scanner.next());
+	ResultSet resultSet= preparedStatement1.executeQuery();
 	resultSet.next();
 	System.out.println("USN:" + resultSet.getString(1) + "name:" + resultSet.getString(2) + "stream :" + resultSet.getString(3) + "clgname :" + resultSet.getString(4) + "CGPA :" + resultSet.getString(5));
 	System.out.println("..............................");
 }break;
 case 5:{
-	PreparedStatement preparedStatement =connection.prepareStatement("delete from BE where USN=? ");
+	PreparedStatement preparedStatement1 =connection.prepareStatement("delete from BE where USN=? ");
 	System.out.println("enter the USN to remove the student");
-	preparedStatement.setString(1, scanner.next());
-	preparedStatement.executeUpdate();
+	preparedStatement1.setString(1, scanner.next());
+	preparedStatement1.executeUpdate();
 	System.out.println("..............student has been removed................");
 	
 }break;
 case 6:{
-	PreparedStatement preparedStatement =connection.prepareStatement("select * from BE ");
-	ResultSet resultSet= preparedStatement.executeQuery();
+	PreparedStatement preparedStatement1 =connection.prepareStatement("select * from BE ");
+	ResultSet resultSet= preparedStatement1.executeQuery();
 	resultSet.next();
 	System.out.println("USN:" + resultSet.getString(1) + "name:" + resultSet.getString(2) + "stream :" + resultSet.getString(3) + "clgname :" + resultSet.getString(4) + "CGPA :" + resultSet.getString(5));
 	System.out.println("..............................");
 	
 }break;
 case 7:{
-	PreparedStatement preparedStatement =connection.prepareStatement("delete from BE ");
-	preparedStatement.executeUpdate();
+	PreparedStatement preparedStatement1 =connection.prepareStatement("delete from BE ");
+	preparedStatement1.executeUpdate();
 	System.out.println("..............removed all................");
 }break;
 case 8:{
